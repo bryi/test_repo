@@ -14,8 +14,5 @@ python3 manage.py db init
 python3 manage.py db migrate
 python3 manage.py db upgrade
 
-#MAKE_LINT_TESTS
-pylint run.py
-
 #GO
 python3 run.py
