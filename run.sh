@@ -1,5 +1,5 @@
-sudo rm -rf migrations/
 sudo chown $USER $(pwd)
+sudo rm -rf migrations/
 #CLEAR DATABASE
 psql -U postgres -d blog_api_db -c "DROP TABLE alembic_version"
 psql -U postgres -d blog_api_db -c "DROP TABLE blogposts"
