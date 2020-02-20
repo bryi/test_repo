@@ -37,9 +37,11 @@ class UserModel(db.Model):
         self.modified_at = datetime.datetime.utcnow()
 
     def save(self):
-        db.session.add(self)
-        db.session.commit()
-
+        try:
+            db.session.add(self)
+            db.session.commit()
+        except:
+            print("ERROR!")
     def update(self, data):
         for key, item in data.items():
             if key == 'password':
@@ -68,7 +70,10 @@ class UserModel(db.Model):
         return '<id {}>'.format(self.id)
 
     def __generate_hash(self, password):
-        return bcrypt.generate_password_hash(password, rounds=10).decode("utf-8")
+        try:
+            return bcrypt.generate_password_hash(password, rounds=10).decode("utf-8")
+        except:
+            print('ERROR!')
 
     def check_hash(self, password):
         return bcrypt.check_password_hash(self.password, password)  

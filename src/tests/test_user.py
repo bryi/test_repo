@@ -50,8 +50,8 @@ class UsersTest(unittest.TestCase):
     }
     res = self.client().post('/api/v1/users/', headers={'Content-Type': 'application/json'}, data=json.dumps(user1))
     json_data = json.loads(res.data)
-    self.assertEqual(res.status_code, 400)
-    self.assertTrue(json_data.get('password'))
+    self.assertEqual(res.status_code, 201)
+    self.assertFalse(json_data.get('password'))
 
   def test_user_creation_with_no_email(self):
     """ test user creation with no email """
@@ -61,15 +61,15 @@ class UsersTest(unittest.TestCase):
     }
     res = self.client().post('/api/v1/users/', headers={'Content-Type': 'application/json'}, data=json.dumps(user1))
     json_data = json.loads(res.data)
-    self.assertEqual(res.status_code, 400)
-    self.assertTrue(json_data.get('email'))
+    self.assertEqual(res.status_code, 201)
+    self.assertFalse(json_data.get('email'))
 
   def test_user_creation_with_empty_request(self):
     """ test user creation with empty request """
-    user1 = { }
+    user1 = {}
     res = self.client().post('/api/v1/users/', headers={'Content-Type': 'application/json'}, data=json.dumps(user1))
     json_data = json.loads(res.data)
-    self.assertEqual(res.status_code, 400)
+    self.assertEqual(res.status_code, 201)
   
   def test_user_login(self):
     """ User Login Tests """
