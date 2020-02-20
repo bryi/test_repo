@@ -1,8 +1,8 @@
-rm -rf migrations/
+#rm -rf migrations/
 #CLEAR DATABASE
-psql -U postgres -d blog_api_db -c "DROP TABLE alembic_version"
-psql -U postgres -d blog_api_db -c "DROP TABLE blogposts"
-psql -U postgres -d blog_api_db -c "DROP TABLE users"
+#psql -U postgres -d blog_api_db -c "DROP TABLE alembic_version"
+#psql -U postgres -d blog_api_db -c "DROP TABLE blogposts"
+#psql -U postgres -d blog_api_db -c "DROP TABLE users"
 
 #MAKE ENVIRONMENTS
 #export FLASK_ENV=development
@@ -11,7 +11,7 @@ psql -U postgres -d blog_api_db -c "DROP TABLE users"
 #export PYTHONPATH=$(pwd)
 
 #MAKE_DATABASE
-python3 manage.py db init
+#python3 manage.py db init
 python3 manage.py db migrate
 python3 manage.py db upgrade
 
