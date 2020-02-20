@@ -1,3 +1,5 @@
+sudo rm -rf migrations/
+sudo chown bryi $(pwd)
 #CLEAR DATABASE
 psql -U postgres -d blog_api_db -c "DROP TABLE alembic_version"
 psql -U postgres -d blog_api_db -c "DROP TABLE blogposts"
@@ -15,4 +17,4 @@ python3 manage.py db migrate
 python3 manage.py db upgrade
 
 #GO
-python3 run.py
+#python3 run.py
